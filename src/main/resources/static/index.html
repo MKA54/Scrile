@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-bind="http://www.w3.org/1999/xhtml" xmlns:v-on="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Form</title>
+
+    <link rel="stylesheet" href="css/style.css" />
+    <script defer src="js/libs/jquery.js"></script>
+    <script defer src="js/libs/vue.js"></script>
+    <script defer src="js/javascript.js"></script>
+</head>
+<body>
+    <div id="modalApp">
+        <button type="button" v-on:click="openModal" :style="{display: buttonState}" class="button">Open modal window</button>
+
+        <div class="server_error_message_container">
+            <span v-show="serverValidation" v-text="serverError"></span>
+        </div>
+
+        <div class="modal" v-cloak :style="{display: modalState}">
+            <button type="button" v-on:click="closeModal" class="modal__button_close">×</button>
+            <form>
+                <h1>Title form</h1>
+                <div>
+                    <p>
+                        <input v-model.trim="firstName"
+                               type="text"
+                               placeholder="First Name*"
+                               aria-label="first name"
+                               v-bind:class="{ 'input_error': firstNameError.error && validation }" />
+                        <span v-show="validation" class="error_message" v-text="firstNameError.message"></span>
+                    </p>
+                    <p>
+                        <input v-model.trim="lastName"
+                               type="text"
+                               placeholder="Last Name*"
+                               aria-label="last name"
+                               v-bind:class="{ 'input_error': lastNameError.error && validation }" >
+                        <span v-show="validation" class="error_message" v-text="lastNameError.message"></span>
+                    </p>
+                    <p>
+                        <input v-model.trim="email"
+                               type="email"
+                               placeholder="user@gmail.com*"
+                               aria-label="email"
+                               v-bind:class="{ 'input_error': emailError.error && validation }" >
+                        <span v-show="validation" class="error_message" v-text="emailError.message"></span>
+                    </p>
+                </div>
+                <div class="modal__form__option">
+                    <p class="modal__form__option__item">
+                        Product type*
+                        <label class="modal__form__option__product_type_label">
+                            <select v-model="productType" v-on:change="addItemPrice" class="modal__form__option__product_type_select">
+                                <option value="" >
+                                    Select product type
+                                </option>
+                                <option value="monitor">
+                                    Monitor
+                                </option>
+                                <option value="laptop">
+                                    Laptop
+                                </option>
+                                <option value="phone">
+                                    Phone
+                                </option>
+                            </select>
+                        </label>
+                    <p v-show="validation" class="error_message" v-text="productTypeError.message"></p>
+                    <p class="modal__form__option__item">
+                        <span>Additinal feature for $100</span>
+                        <label class="modal__switch">
+                            <input type="checkbox" v-model="additional100" v-on:change="add100" class="modal__switch__input">
+                            <span class="modal__switch__slider"></span>
+                        </label>
+                    </p>
+                    <p class="modal__form__option__item">
+                        <span>Additinal feature for $200</span>
+                        <label class="modal__switch">
+                            <input type="checkbox" v-model="additional200" v-on:change="add200" class="modal__switch__input">
+                            <span class="modal__switch__slider"></span>
+                        </label>
+                    </p>
+                    <label>
+                        <textarea v-model="comment" placeholder="Type your comment"></textarea>
+                    </label>
+                    <p class="modal__form__option__item">
+                        <span>Total price</span>
+                        <span>${{totalPrice}}</span>
+                    </p>
+
+                    <button type="button" v-on:click="sendForm" class="button">Send form</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

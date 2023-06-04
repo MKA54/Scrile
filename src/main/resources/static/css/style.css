@@ -1,0 +1,171 @@
+html {
+    box-sizing: border-box;
+}
+
+*, *::before, *::after {
+    box-sizing: inherit;
+}
+
+[v-cloak] {
+    display: none;
+}
+
+body {
+    background-color: #808080;
+    font-size: 16px;
+    font-family: Arial, Verdana, 'Microsoft Sans Serif', sans-serif;
+    line-height: 1.2em;
+}
+
+.modal {
+    background-color: #FFF;
+    max-width: 650px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.modal__button_close {
+    margin-top: 15px;
+    margin-right: 15px;
+    color: #000;
+    float: right;
+    font-size: 40px;
+    font-weight: 200;
+    cursor: pointer;
+    transition: 0.3s;
+    border: none;
+    background-color: #FFF;
+}
+
+.modal__button_close:hover {
+    color: #f00;
+}
+
+.modal form {
+    padding: 25px 20px;
+}
+
+.modal form input {
+    width: 100%;
+    height: 53px;
+    padding-left: 15px;
+    font-size: 1rem;
+}
+
+.modal form h1 {
+    margin-bottom: 25px;
+}
+
+.modal__form__option__item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.modal__form__option__product_type_label {
+    width: 50%;
+}
+
+.modal__form__option__product_type_select {
+    width: 100%;
+    height: 42px;
+    padding-left: 15px;
+    border: 1px solid #333;
+    border-radius: 5px;
+    color: #333;
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+.modal__form__option__product_type_select:not([multiple]) {
+    padding-right: 16px;
+    background-position: calc(95%) 14px;
+    background-size: 1.2em auto;
+    background-image: url(../img/svg/frame_select.svg);
+    background-repeat: no-repeat;
+}
+
+.modal__switch {
+    display: inline-block;
+    position: relative;
+    width: 48px;
+    height: 28px;
+}
+
+.modal__switch__input {
+    height: 0;
+    width: 0;
+    opacity: 0;
+}
+
+.modal__switch__slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    border-radius: 34px;
+    background-color: #CCC;
+    transition: 0.4s;
+}
+
+.modal__switch__slider::before {
+    content: "";
+    position: absolute;
+    cursor: pointer;
+    left: 4px;
+    bottom: 4px;
+    height: 21px;
+    width: 21px;
+    border-radius: 50%;
+    background-color: #FFF;
+    transition: 0.4s;
+}
+
+.modal__switch__input:focus + .modal__switch__slider {
+    box-shadow: 0 0 1px #FFF;
+}
+
+.modal__switch__input:checked + .modal__switch__slider {
+    background-color: #6c3;
+}
+
+.modal__switch__input:checked + .modal__switch__slider::before {
+    transform: translateX(21px);
+    -ms-transform: translateX(21px);
+}
+
+.modal__form__option textarea {
+    width: 100%;
+    height: 105px;
+    padding: 20px 15px;
+    resize: none;
+    font-size: 1rem;
+}
+
+.button {
+    margin: 0 auto;
+    display: block;
+    width: 160px;
+    height: 45px;
+    background-color: #448AE0;
+    border: none;
+    border-radius: 5px;
+    font-size: 20px;
+    color: #FFF;
+}
+
+.error_message {
+    color: #F00;
+}
+
+.input_error {
+    border: 1px solid #F00;
+    padding: 10px;
+}
+
+.server_error_message_container {
+    margin: 80px auto;
+    color: red;
+}
